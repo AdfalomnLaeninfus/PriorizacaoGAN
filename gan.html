@@ -1,14 +1,17 @@
 <!--
 
     Title: Relatório do GAN.
-    Author: Pedro Gabriel.
-    Revised by: YumemiReis
+    Author: Pedro Gabriel/Github:P3DR0G4BRI3L 
+    Revised by: YumemiReis/Github:AdfalomnLaeninfus and Demerval/Github:JuniiorMendes
 
--->
+    -->
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+    <link rel="icon" type="image/x-icon"
+        href="https://www.siliconweek.com/wp-content/uploads/2014/09/RAV1Eg2C_400x400.jpeg">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=7">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,86 +24,204 @@
             box-sizing: border-box;
         }
 
+        #titulo {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         body {
-            width: 100%;
-            overflow: hidden;
             background-color: #FDFDFD;
             font-family: Arial, sans-serif;
         }
 
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         label {
             display: block;
-            margin: 10px 0 5px;
+            margin-bottom: 2px;
+            /* Espaço entre o label e o input */
+            font-size: 1rem;
         }
 
-        input, textarea {
-            width: 100%;
+        #lbcheck {
+            margin-right: -15px;
+            margin-left: 30px;
+        }
+
+        /* Estilo dos inputs, selects e textarea */
+        textarea,
+        input[type="text"],
+        select {
+            width: calc(100% - 110px);
+            /* Espaço para o botão de limpar */
             padding: 8px;
             outline: none;
-            resize: vertical;
             border-radius: 4px;
-            margin-bottom: 15px;
             border: 1px solid #ccc;
+            resize: vertical;
+            /* Permite redimensionar textarea */
+            float: left;
+            /* Alinha input à esquerda */
         }
 
+        /* Ajusta altura e comportamento do textarea */
+        textarea {
+            height: 150px;
+            /* Altura maior para textarea */
+            resize: vertical;
+            /* Permite redimensionamento apenas vertical */
+            padding: 10px;
+            /* Ajusta espaçamento interno */
+        }
+
+        /* Botões principais */
         button,
         input[type="submit"] {
-            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
             padding: 10px 15px;
+            border-radius: 4px;
+            background-color: #4CAF50;
         }
 
         button:hover,
         input[type="submit"]:hover {
             background-color: #45a049;
-			
         }
 
+        select {
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: solid 1px #ccc;
+            outline: none;
+        }
+
+        /* Organização dos elementos dentro do form */
+        form div {
+            display: flex;
+            flex-direction: column;
+            /* Label acima do input */
+            width: 95%;
+            margin-bottom: -30px;
+        }
+
+        form div>div {
+            display: flex;
+
+            gap: 5px;
+        }
+
+
+
+        /* Botão de limpar à direita */
+        form div button.clear-input {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            width: 80px;
+            /* Largura fixa para botão */
+            margin-left: auto;
+            /* Alinha o botão à direita */
+
+            position: relative;
+            top: -32px;
+        }
+
+
+
+        /* Estilo do botão limpar no hover */
+        form div button.clear-input:hover {
+            background-color: #d9534f;
+        }
+
+        /* Ajuste para os inputs, selects e textarea ocuparem o restante do espaço */
+        form div input[type="text"],
+        form div select,
+        form div textarea {
+            flex: 1;
+            /* Faz com que os elementos ocupem o espaço restante */
+        }
+
+        /* Estilo do relatório */
         .reportContent {
             padding: 10px;
             margin-top: 20px;
             min-height: 6rem;
             border-radius: 4px;
-			line-break: anywhere;
-			word-break: break-word;
+            line-break: anywhere;
+            word-break: break-word;
             border: 1px solid #ccc;
-			white-space: break-spaces;
+            white-space: break-spaces;
             background-color: #f9f9f9;
         }
 
         .report {
+            gap: 1rem;
             width: 100%;
+            display: flex;
             height: fit-content;
+            flex-direction: column;
         }
 
-        .report > button {
-            right: 1rem;
-            bottom: -4rem;
-            position: absolute;
+        #copyButton {
+            margin-top: -45px;
+            padding: 30px;
         }
-		
-		.report > button:first-of-type {
-			right: auto;
-			background-color: #3594fa;
-		}
-		
-		.report > button,
-		.report > button:first-of-type {
-			border-radius: 4px;
-		}
+
+        @keyframes AnimConfirmacao {
+            0% {
+                background-color: green;
+            }
+
+            100% {
+                background-color: #3594fa;
+            }
+        }
+
+        .confirmacao {
+            animation: AnimConfirmacao 1s forwards;
+            transition: 0.2s;
+        }
+
+        .report>div:first-of-type {
+            gap: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .report>div:last-of-type>button:last-of-type {
+            right: 0;
+            position: absolute;
+            background-color: #3594fa;
+        }
+
+        #format-report {
+            margin-bottom: -5px;
+        }
 
         .gan-card {
             gap: 2rem;
             width: 100%;
-            height: 100vh;
+            height: 70vh;
             display: flex;
             overflow: hidden;
             padding: 6rem 4rem;
         }
 
-        .gan-card > div:first-child {
+        .gan-card>div:first-child {
             max-width: 50%;
             width: 100%;
             overflow-y: auto;
@@ -109,42 +230,6 @@
         .gan-result {
             width: 100%;
             height: 100vh;
-        }
-
-        #toast {
-            opacity: 0;
-            right: 2rem;
-            bottom: 2rem;
-            position: fixed;
-            min-height: 4rem;
-            max-width: 24rem;
-            padding: 1rem;
-            border-radius: 10px;
-            border: 2px solid #9d9d9d;
-            background-color: #CDCDCD;
-        }
-
-        @keyframes open-toast {
-            0%      { width: 0px; }
-            20%     { width: 100%; opacity: 1; }
-            90%     { width: 100%; opacity: 1; }
-            100%    { width: 0px;  opacity: 0; }
-        }
-
-        #toast.toast {
-            animation: open-toast 6s forwards;
-        }
-
-        #toast.error {
-            animation: open-toast 6s forwards;
-            border-color: #bb7070;
-            background-color: #ff9898;
-        }
-
-        #toast.success {
-            animation: open-toast 6s forwards;
-            border-color: #45a049;
-            background-color: #91e495;
         }
 
         @media (max-width: 900px) {
@@ -156,153 +241,625 @@
                 padding: 1rem;
                 flex-direction: column;
             }
-            
-            .gan-card > div:first-child {
+
+            .gan-card>div:first-child {
                 width: 100%;
                 max-width: 100%;
                 overflow: visible;
             }
+
+            .reportContent {
+                height: 200px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .reportContent {
+                margin-top: 55px;
+                height: 255px;
+            }
+        }
+
+        #clearButton {
+            background-color: red;
+        }
+
+        #hint {
+            height: 20vh;
+            width: 90%;
+            margin-right: 5vw;
+            margin-left: 5vw;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10vh;
+            overflow-y: scroll;
+        }
+
+        #hint::before {
+            content: "";
+            position: absolute;
+            top: 10vh;
+            left: 5vw;
+            width: 1px;
+            height: 15px;
+            background-color: #666;
+            transition: all 1s;
+            animation: text 1s infinite;
+        }
+
+        @keyframes text {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Certifique-se de que o input tenha position: relative */
+        #impacto-container {
+            position: relative;
+            /* O contêiner pai precisa ter position: relative */
+            width: 100%;
+        }
+
+        /* Input de impacto */
+        #impacto {
+            /* Certifique-se de que o input tenha largura adequada */
+            z-index: 1;
+        }
+
+        /* Contêiner de sugestões */
+        #suggestions {
+            position: absolute;
+            /* Permite que fique diretamente abaixo do input */
+            top: 100%;
+            /* Posiciona exatamente após o input */
+            left: 0;
+            width: 100%;
+            /* Faz com que o dropdown siga a largura do input */
+            border: 1px solid #ccc;
+            background-color: white;
+            z-index: 2;
+            /* Certifique-se de que as sugestões fiquem acima de outros elementos */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            /* Limita a altura para evitar que o dropdown fique muito grande */
+            overflow-y: auto;
+            /* Adiciona barra de rolagem, se necessário */
+            display: none;
+            /* Inicialmente escondido */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Adiciona um leve sombreamento */
+        }
+
+        /* Estilo das sugestões */
+        #suggestions li {
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+
+        #suggestions li:hover,
+        #suggestions li.active {
+            background-color: #f0f0f0;
+            color: #000;
         }
     </style>
 
     <title>Relatório GAN</title>
 </head>
+
 <body>
-
-
-
     <section class="gan-card">
         <div>
-            <h1>Relatório GAN</h1>
-    
+            <h1>GAN</h1>
+
             <form id="linkForm">
-                <label for="grupo">Grupo</label>
-                <input type="text" id="grupo" name="grupo" required>
-            
-                <label for="link">Link</label>
-                <input type="text" id="link" name="link" required>
-            
-                <label for="impacto">Impacto</label>
-                <input type="text" id="impacto" name="impacto" required>
-            
-                <label for="obs">Observação</label>
-                <textarea id="obs" name="obs" rows="4" required></textarea>
-            
-                <label for="local">Loja</label>
-                <input type="text" id="local" name="local" required>
+
+                <div>
+                    <label for="titulo">Título da Solicitação</label>
+                    <select name="titulo" id="titulo" required>
+                        <option value="⚠️PRIORITÁRIO⚠️">⚠️PRIORITÁRIO⚠️</option>
+                        <option value="🔴🔴 CRITICO 🔴🔴">🔴🔴 CRITICO 🔴🔴</option>
+                        <option value=" 🆘 🆘 🆘  CRISE 🆘 🆘 🆘 "> 🆘 🆘 🆘 CRISE 🆘 🆘 🆘 </option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="grupo">GRUPO/FILA:</label>
+                    <input type="text" id="grupo" name="grupo" placeholder="Informe o grupo ou setor" required>
+                    <button type="button" class="clear-input" data-target="grupo">Limpar</button>
+                </div>
+
+                <div>
+                    <label for="link">LINKS:</label>
+                    <input type="text" id="link" name="link" placeholder="Informe o link relevante" required>
+                    <button type="button" class="clear-input" data-target="link">Limpar</button>
+                </div>
+
+                <div>
+                    <label for="impacto">IMPACTO:</label>
+                    <input type="text" id="impacto" name="impacto" placeholder="Descreva o impacto da solicitação"
+                        required>
+                    <ul id="suggestions" style="display: none;"></ul>
+                    <button type="button" class="clear-input" data-target="impacto">Limpar</button>
+                </div>
+
+                <div>
+                    <label for="obs">Observações</label>
+                    <textarea id="obs" name="obs" placeholder="Adicione observações relevantes" required></textarea>
+                    <button type="button" class="clear-input" data-target="obs">Limpar</button>
+                </div>
+
+                <div>
+                    <label for="local">LOJA:</label>
+                    <input type="text" id="local" name="local" placeholder="Informe a localização" required>
+                    <button type="button" class="clear-input" data-target="local">Limpar</button>
+                </div>
+
             </form>
         </div>
-        
+
         <div class="report" id="report">
-            <strong><p>Relatório</p></strong>
+            <!-- <strong><p>Relatório</p></strong> -->
             <pre id="reportContent" class="reportContent"></pre>
-			<button id="clearButton" >Limpar</button>
-            <button id="copyButton" style="display: none;">Copiar para Área de Transferência</button>
+
+            <div>
+                <label for="format-report" id="lbcheck">Destacar: </label>
+                <input id="format-report" name="format-report" type="checkbox">
+
+                <label for="auto-redirect" id="lbcheck">Redirecionar automaticamente:</label>
+                <input id="auto-redirect" name="auto-redirect" type="checkbox">
+
+                <label for="auto-redirect" id="lbcheck">Sugestões:</label>
+                <input type="checkbox" id="enableSuggestions" />
+            </div>
+
+            <div>
+                <button id="clearButton">Limpar todos os campos</button>
+                <button id="copyButton" style="display: none;">Copiar</button>
+            </div>
         </div>
     </section>
 
-    <div id="toast">
-        <p></p>
+    <div id="hint">
+        <!-- <p>NOTA: Deve ser enviado para o GAN > Prioridades Sustentação!</p> -->
     </div>
 
     <script>
-        const toast = document.getElementById("toast");
-        const toastText = document.querySelector("#toast > p");
+        document.querySelectorAll('.clear-input').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const targetId = button.getAttribute('data-target');
+                const targetElem = document.getElementById(targetId);
+
+                copyButton.addEventListener("click", () => {
+                    copyButton.classList.toggle("confirmacao")
+                })
+
+                if (targetElem) {
+                    targetElem.value = ""; // Limpa o conteúdo do campo
+                    updateReport();
+                }
+            });
+        });
+
+
+
+
+        function showCopyMessage(message) {
+            const copyStatusElem = document.getElementById('copy-status');
+
+            // Define a mensagem
+            copyStatusElem.textContent = message;
+
+            // Torna visível com opacidade 1
+            copyStatusElem.style.opacity = "1";
+
+            // Aguarda 3 segundos e inicia o fade-out
+            setTimeout(() => {
+                copyStatusElem.style.opacity = "0"; // Gradualmente desaparece
+            }, 3000);
+        }
+
+
+
+
+
+
+
 
         // Elements of form.
-        const form          = document.getElementById("linkForm");
-        const reportElem    = document.getElementById("report");
-        const reportContent = document.getElementById('reportContent')
-        const copyButton    = document.getElementById("copyButton");
-		const clearButton   = document.getElementById("clearButton");
-        
+        const form = document.getElementById("linkForm");
+        const reportElem = document.getElementById("report");
+        const formatElem = document.getElementById("format-report");
+        const reportContent = document.getElementById('reportContent');
+        const copyButton = document.getElementById("copyButton");
+        const clearButton = document.getElementById("clearButton");
+
         // Elements of final report text.
-        const obsElem       = document.getElementById('obs');
-        const linkElem      = document.getElementById('link');
-        const groupElem     = document.getElementById('grupo');
-        const localElem     = document.getElementById('local');
-        const impactElem    = document.getElementById('impacto');
+        const obsElem = document.getElementById('obs');
+        const linkElem = document.getElementById('link');
+        const groupElem = document.getElementById('grupo');
+        const localElem = document.getElementById('local');
+        const impactElem = document.getElementById('impacto');
+        const titleElem = document.getElementById('titulo');
+        const hint = document.getElementById("hint");
+        let animation = false;
 
         // Function that update report text.
         const updateReport = () => {
-            let report = `⚠️ PEDIDO DE PRIORIZAÇÃO ⚠️\n`;
+            let report = "";
 
-            groupElem.value     ? report += `GRUPO/FILA: ${groupElem.value}\n`  : undefined;
-            linkElem.value      ? report += `LINKS: ${linkElem.value}\n`        : undefined;
-            impactElem.value    ? report += `IMPACTO: ${impactElem.value}\n`    : undefined;
-            obsElem.value       ? report += `OBS: ${obsElem.value}\n`           : undefined;
-            localElem.value     ? report += `LOJA: ${localElem.value}\n`        : undefined;
+            if (formatElem.checked) {
 
-            reportContent.innerText = report
-            copyButton.style.display = 'inline-block';
-        };
+                titleElem.value ? report += `*${titleElem.value.trim()}*\n\n` : undefined;
+                groupElem.value ? report += `*GRUPO/FILA*: ${groupElem.value.trim()}\n` : undefined;
 
-        form.addEventListener('submit', (ev) => {
-            updateReport();
-        });
+                if (linkElem.value.includes(",")) {
+                    linkElem.value ? report += `*LINKS*:\n` : undefined;
 
-        obsElem.onkeyup = (ev) => updateReport();
-        linkElem.onkeyup = (ev) => updateReport();
-        groupElem.onkeyup = (ev) => updateReport();
-        localElem.onkeyup = (ev) => updateReport();
-        impactElem.onkeyup = (ev) => updateReport();
-
-        // Função para copiar o relatório para a área de transferência
-        let toastOpened = false;
-        copyButton.addEventListener('click', function() {
-            const reportText = reportContent.innerText;
-
-            function open_toast(type, message)
-            {
-                if (toastOpened) {
-                    return;
+                    linkElem.value.split(",").map(item => {
+                        report += `\t${item.replace(" ", "")}\n`;
+                    });
+                } else {
+                    linkElem.value ? report += `*LINK*: ${linkElem.value.trim()}\n` : undefined;
                 }
 
-                
-                toastOpened = true,
-                toast.classList.toggle(type),
-                toastText.textContent = message,
-                
-                setTimeout(() => {
-                    toastOpened = false;
-                    toast.classList.toggle(type);
-                }, 6000)
+                impactElem.value ? report += `*IMPACTO*: ${impactElem.value.trim()}\n` : undefined;
+                obsElem.value ? report += `*OBS*: ${obsElem.value.trim()}\n\n` : undefined;
+                localElem.value ? report += `*LOJA*: ${localElem.value.trim()}\n` : undefined;
+
+            } else {
+
+                titleElem.value ? report += `${titleElem.value.trim()}\n\n` : undefined;
+                groupElem.value ? report += `GRUPO/FILA: ${groupElem.value.trim()}\n` : undefined;
+
+                if (linkElem.value.includes(",")) {
+                    linkElem.value ? report += `LINKS:\n` : undefined;
+
+                    linkElem.value.split(",").map(item => {
+                        report += `\t${item.replace(" ", "")}\n`;
+                    });
+                } else {
+                    linkElem.value ? report += `LINK: ${linkElem.value.trim()}\n` : undefined;
+                }
+
+                impactElem.value ? report += `IMPACTO: ${impactElem.value.trim()}\n` : undefined;
+                obsElem.value ? report += `OBS: ${obsElem.value.trim()}\n\n` : undefined;
+                localElem.value ? report += `LOJA: ${localElem.value.trim()}\n` : undefined;
+
             }
 
-            navigator.clipboard.writeText(reportText)
-                .then(
-                    () => {
-                        open_toast("success", "Copiado com sucesso!");
-                    },
-                    () => {
-                        open_toast("error", "Erro ao enviar texto para ");
-                    },
-                );
-        });
-		
-		function confirmar(msg){
-			return confirm(msg);
-		}
-		
-		clearButton.addEventListener("click", (ev) => {
-			ev.preventDefault();
-			if(confirmar("Deseja excluir tudo?")){
-				
-			obsElem.value = "";
-			linkElem.value = "";
-			groupElem.value = "";
-			localElem.value = "";
-			impactElem.value = "";
-			reportContent.innerText = "";
-			copyButton.style.display = "none";
-			}else{
-			alert("pra que apertou então?");
-			}
-		});
-		
-		
-		
+            reportContent.innerText = report;
+            copyButton.style.display = 'inline-block';
 
-		</script>
+            if (groupElem.value.includes("VENDOR_ALGAR_") && !groupElem.value.includes("FIELD")) {
+                hint.innerHTML = "<p>NOTA: Deve ser enviado para o GAN > Prioridades Sustentação!</p>"
+            }
+
+            if (groupElem.value.includes("FIELD") && !groupElem.value.includes("TECH")) {
+                hint.innerHTML = "NOTA: Deve ser enviado para o GAN > Prioridades Field Algar!"
+            }
+
+            if (groupElem.value.includes("TECH_")) {
+                hint.innerHTML = "NOTA: Deve ser enviado para o DSI Operações - Célula , Field, GAN, SBR e Suporte Aplicação"
+            }
+
+        };
+
+        form.onsubmit = (ev) => {
+            ev.preventDefault();
+            updateReport();
+        };
+        titleElem.onchange = (ev) => updateReport();
+        obsElem.onkeyup = (ev) => updateReport();
+        linkElem.onkeyup = (ev) => updateReport();
+
+        groupElem.onkeyup = (ev) => {
+            updateReport();
+
+            if (groupElem.value && !animation) {
+                animation = true; // Define animation como true
+
+                const getText = hint.textContent;
+                const textSplit = getText.split('');
+                hint.textContent = "";
+
+                textSplit.forEach((item, line) => {
+                    setTimeout(() => {
+                        hint.textContent += item;
+
+                        // Verifica se todos os caracteres foram exibidos
+                        if ((line + 1) % textSplit.length === 0) {
+                            animation = false; // Reseta animation após a animação
+                        }
+                    }, 5 * line);
+                });
+            }
+        };
+
+        formatElem.onchange = (ev) => updateReport();
+        localElem.onkeyup = (ev) => updateReport();
+        impactElem.onchange = (ev) => updateReport();
+
+        // Função para copiar o relatório para a área de transferência
+        const autoRedirectElem = document.getElementById('auto-redirect');
+
+        copyButton.addEventListener('click', function () {
+            const reportText = reportContent.innerText;
+
+            if (!reportText) {
+                alert("O relatório está vazio. Preencha antes de copiar.");
+                return;
+            }
+
+            navigator.clipboard.writeText(reportText).then(() => {
+                copyButton.classList.toggle("confirmacao");
+
+                if (autoRedirectElem.checked) {
+                    let redirectUrl = "";
+
+
+                    if (["VENDOR_PRICEFY_N2", "TECH_TELECOM"].includes(groupElem.value)) {
+                        redirectUrl = "https://mail.google.com/chat/u/0/#chat/space/AAAAkwmMS4s"; // Link para Sustentação
+                    }
+
+                    else if (groupElem.value.includes("VENDOR") && hint.innerText.includes("Prioridades Sustentação")) {
+                        redirectUrl = "https://mail.google.com/chat/u/0/#chat/space/AAAAkwmMS4s"; // Substitua pelo link correto
+                    } else if (groupElem.value.includes("FIELD") && hint.innerText.includes("Prioridades Field Algar")) {
+                        redirectUrl = "https://mail.google.com/chat/u/0/#chat/space/AAAAD82Jlqw"; // Substitua pelo link correto
+                    } else if (groupElem.value.includes("TECH") && hint.innerText.includes("DSI Operações")) {
+                        redirectUrl = "https://mail.google.com/chat/u/0/#chat/space/AAAANY3cses"; // Substitua pelo link correto
+                    }
+
+                    if (redirectUrl) {
+                        window.open(redirectUrl, "_blank");
+                    } else {
+                        alert("Nenhum redirecionamento disponível para este grupo.");
+                    }
+                } else {
+                    showCopyMessage("Texto copiado para a área de transferência!");
+                }
+            }).catch(() => {
+                alert("Erro ao copiar o texto. Tente novamente.");
+            });
+        });
+
+
+        copyButton.addEventListener("click", () => {
+            copyButton.classList.toggle("confirmacao")
+        })
+
+        function confirmar(msg) {
+            return confirm(msg);
+        }
+
+        impactElem.addEventListener("input", hideSelected)
+        function hideSelected() {
+            impactElem.children[0].hidden = true;
+        }
+
+        let gan = {
+            sustentacao: ["VENDOR_ALGAR_FRENTE_DE_CAIXA_N1"]
+
+        }
+
+
+        clearButton.addEventListener("click", (ev) => {
+            ev.preventDefault();
+            copyButton.classList.remove("confirmacao")
+
+            if (confirmar("Deseja excluir tudo?")) {
+
+                obsElem.value = "";
+                linkElem.value = "";
+                groupElem.value = "";
+                localElem.value = "";
+                impactElem.value = "";
+                reportContent.innerText = "";
+                copyButton.style.display = "none";
+                hint.innerText = "";
+
+            }
+        });
+
+
+        // Variáveis para o input de impacto e o select de título
+        const tituloSelect = document.getElementById("titulo");
+        const impactoInput = document.getElementById("impacto");
+        const suggestionsBox = document.getElementById("suggestions");
+        const enableSuggestionsCheckbox = document.getElementById("enableSuggestions");  // Checkbox
+        // Arrays com as sugestões
+        const criseSuggestions = [
+            "CTF e Sitef - (Transações Negadas e Cancelamento por timeout)",
+            "Localidade fechada devido problema de sistema, Energia ou Infraestrutura",
+            "Link de Dados - Link Principal e BKP OFF",
+            "Impossibilitado de vender mais de um item para várias lojas",
+            "Falha no processo de atualização de Preços para mais de uma loja (PLU)",
+            "Lojas com indisponibilidade na Impressão de Notas Fiscais ( Store Picking / E-commerce )",
+            "Indisponibilidade do Sistema do Balcão ou da mensageria",
+            "Lojas com Indisponibilidade do SVA - SVA+",
+            "Indisponibilidade do Portal de Sistemas (Afeta SVA / Click-Retire / SAP / Sitefweb)",
+            "Indisponibilidade do Catálogo Eletrônico Web",
+            "Indisponibilidade do SAD",
+            "CD impossibilitado de receber, faturar e expedir mercadoria por problema de sistema, energia ou infraestrutura",
+            "Indisponibilidade no WebInvoice",
+            "Indisponibilidade no Gold - Não emite e nem recebe nota, não integra pedidos",
+            "Indisponibilidade do Infolog - Não imprime etiquetas e não integra pedidos",
+            "CDs Sem Comunicação",
+            "Indisponibilidade ou Lentidão da Mensageria - Inventti ( Causando parada nas emissões e recebimento de Notas )",
+            "Indisponibilidade na VPN devido ao Home Office",
+            "Indisponibilidade ou lentidão do Mastersaf em fechamento (dias 01 a 07)",
+            "Indisponibilidade ou Lentidão do FPW RH em fechamento da folha de pagamento (Dias 15 a 18)",
+            "Problemas de conectividade da matriz, impedindo a comunicação com o Data Center",
+            "Indisponibilidade ou Lentidão do Universal RH em fechamento da folha de pagamento (Dias 15 a 18)",
+            "Indisponibilidade ou Lentidão do People Soft em fechamento da folha de pagamento (Dias 15 a 18)",
+            "Indisponibilidade ou Lentidão do Hyperion em fechamento (dias 01 a 07)"
+        ];
+
+        const criticoSuggestions = [
+            "Indisponibilidade ou Lentidão no Omnia",
+            "Indisponibilidade ou Lentidão do Pricefy",
+            "Lojas com indisponibilidade na Impressão de Notas Fiscais ( Balcão e/ou Pool )",
+            "Lentidão impressão de notas ( Balcão e Store Picking )",
+            "Lentidão SVA - SVA+",
+            "Indisponibilidade de PDV´s por falha de infra ou hardware maior que 30% da frente de caixa, não ocasionado fechamento de loja",
+            "Falha no concentrador de postos, afetando a automação.",
+            "Frente de caixa Offline - Causa lentidão mas não para a venda",
+            "Indisponibilidade do Gesprom",
+            "Site e APP fora do ar",
+            "Gold - lentidão para integrar pedidos, emissão e recebimento de notas",
+            "Infolog - Lentidão para imprimir etiquetas e integrar pedidos",
+            "Indisponibilidade no GLS Telnet",
+            "Indisponibilidade no Citrix GLS",
+            "Indisponibilidade ou Lentidão Mensageria eSocial em fechamento da folha de pagamento (Dias 28 a 05)",
+            "Daily Sales - Relatório de Vendas \ Mandala",
+            "Indisponibilidade na geração de pedidos para reabastecimento de mais de uma loja numa determinada Região"
+        ];
+
+        const prioritarioSuggestions = [
+            "Indisponibilidade de PDV´s segmentados (Cafeteria, Eletro, Drogarias, Express, Postos) desde que não ultrapasse 30% dos pdvs totais",
+            "Balcão de atendimento",
+            "Acesso a Email Genérico",
+            "Problemas de Wifi clientes e corporativo",
+            "Falta de atualização de preços em balanças",
+            "Impressoras de cartazeamento e etiquetas",
+            "Verificador de preço passível de multa",
+            "Atendimento do planexa",
+            "Adequação de perfil e acesso em formatos pequenos",
+            "Integração de XML de fornecedor local",
+            "Cartão zerado em postos",
+            "Não ativação de cupons de desconto",
+            "PBM - Consulta de descontos de convênio",
+            "Incidente ou requisição fora do SLA do chamado",
+            "Problemas com membership",
+            "Problema de pesagem em setor com uma única balança",
+            "Pedido e-commerce com cliente na loja",
+            "Chamado SAC- canais especiais",
+            "Conexão Wifi",
+            "Lentidão da rede",
+            "Integração de romaneios/pedidos",
+            "Impressoras do pool",
+            "Integração de XML",
+            "Problema na VPN",
+            "Problema para acessar o google/2fa",
+            "Problema no bitlocker",
+            "Entregas de dados para diretoria\comex",
+            "Incidentes relacionados ao fechamento mensal",
+            "Carreta parada",
+            "Incidente ou requisição fora do SLA contratado"
+        ];
+
+        // Função para exibir as sugestões
+        function showSuggestions() {
+            // Verifica se o checkbox está marcado
+            if (!enableSuggestionsCheckbox.checked) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            const query = impactoInput.value.toLowerCase();
+            suggestionsBox.innerHTML = "";
+            if (!query) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            // Verifica o valor do select e escolhe o array apropriado de sugestões
+            let filteredSuggestions = [];
+            if (tituloSelect.value === " 🆘 🆘 🆘  CRISE 🆘 🆘 🆘 ") {
+                filteredSuggestions = criseSuggestions.filter(suggestion => suggestion.toLowerCase().includes(query));
+            } else if (tituloSelect.value === "🔴🔴 CRITICO 🔴🔴") {
+                filteredSuggestions = criticoSuggestions.filter(suggestion => suggestion.toLowerCase().includes(query));
+            } else if (tituloSelect.value === "⚠️PRIORITÁRIO⚠️") {
+                filteredSuggestions = prioritarioSuggestions.filter(suggestion => suggestion.toLowerCase().includes(query));
+            }
+
+            if (filteredSuggestions.length === 0) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            filteredSuggestions.forEach((suggestion, index) => {
+                const li = document.createElement("li");
+                li.textContent = suggestion;
+                li.addEventListener("click", function () {
+                    impactoInput.value = suggestion;
+                    suggestionsBox.style.display = "none";
+                });
+                li.setAttribute('data-index', index);
+                suggestionsBox.appendChild(li);
+            });
+
+            suggestionsBox.style.display = "block"; // Exibe as sugestões
+        }
+
+        // Função para navegar nas sugestões com as setas do teclado
+        let selectedIndex = -1;
+
+        function navigateSuggestions(event) {
+            const suggestions = document.querySelectorAll("#suggestions li");
+            if (suggestions.length === 0) return;
+
+            if (event.key === "ArrowDown") {
+                // Navega para baixo
+                selectedIndex = Math.min(selectedIndex + 1, suggestions.length - 1);
+            } else if (event.key === "ArrowUp") {
+                // Navega para cima
+                selectedIndex = Math.max(selectedIndex - 1, 0);
+            } else if (event.key === "Enter" && selectedIndex >= 0) {
+                // Seleciona a sugestão
+                impactoInput.value = suggestions[selectedIndex].textContent;
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            // Atualiza o estado da sugestão selecionada
+            suggestions.forEach((li, index) => {
+                if (index === selectedIndex) {
+                    li.classList.add("active");
+                } else {
+                    li.classList.remove("active");
+                }
+            });
+        }
+
+        // Evento de escuta para o campo de impacto
+        impactoInput.addEventListener("input", showSuggestions);
+
+        // Evento de mudança para o select de título
+        tituloSelect.addEventListener("change", function () {
+            showSuggestions(); // Atualiza as sugestões quando o título for alterado
+        });
+
+        // Evento para navegação nas sugestões com as setas
+        impactoInput.addEventListener("keydown", navigateSuggestions);
+
+    </script>
+    <div id="copy-status" style="
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transition: opacity 1s ease-out;
+        pointer-events: none;">
+        Copiado com sucesso!
+    </div>
+
+
 </body>
+
 </html>
